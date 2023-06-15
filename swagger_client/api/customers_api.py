@@ -610,7 +610,7 @@ class CustomersApi(object):
                  returns the request thread.
         """
 
-        all_params = ['page', 'page_size', 'query', 'order_by']  # noqa: E501
+        all_params = ['page', 'page_size', 'query', 'order_by', 'company_id']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -628,7 +628,9 @@ class CustomersApi(object):
 
         collection_formats = {}
 
-        path_params = {}
+        path_params = {
+            "companyId": params['company_id']
+        }
 
         query_params = []
         if 'page' in params:
