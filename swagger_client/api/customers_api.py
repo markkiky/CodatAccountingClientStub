@@ -641,6 +641,8 @@ class CustomersApi(object):
             query_params.append(('query', params['query']))  # noqa: E501
         if 'order_by' in params:
             query_params.append(('orderBy', params['order_by']))  # noqa: E501
+        if 'company_id' in params:
+            companyId = params['company_id']
 
         header_params = {}
 
@@ -656,7 +658,7 @@ class CustomersApi(object):
         auth_settings = ['auth_header']  # noqa: E501
 
         return self.api_client.call_api(
-            '/companies/{companyId}/data/customers', 'GET',
+            f'/companies/{companyId}/data/customers', 'GET',
             path_params,
             query_params,
             header_params,

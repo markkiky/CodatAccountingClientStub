@@ -68,7 +68,7 @@ class CompanyInfoApi(object):
                  returns the request thread.
         """
 
-        all_params = []  # noqa: E501
+        all_params = ['company_id']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -83,6 +83,8 @@ class CompanyInfoApi(object):
                 )
             params[key] = val
         del params['kwargs']
+        
+        companyId = params['company_id']
 
         collection_formats = {}
 
@@ -104,7 +106,7 @@ class CompanyInfoApi(object):
         auth_settings = ['auth_header']  # noqa: E501
 
         return self.api_client.call_api(
-            '/companies/{companyId}/data/info', 'GET',
+            f'/companies/{companyId}/data/info', 'GET',
             path_params,
             query_params,
             header_params,
