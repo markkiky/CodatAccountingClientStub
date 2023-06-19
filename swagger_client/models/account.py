@@ -33,9 +33,9 @@ class Account(object):
     attribute_map = {
     }
 
-    def __init__(self):  # noqa: E501
-        """Account - a model defined in Swagger"""  # noqa: E501
-        self.discriminator = None
+    def __init__(self, **kwargs):
+        for key, value in kwargs.items():
+            setattr(self, key, value)
 
     def to_dict(self):
         """Returns the model properties as a dict"""
