@@ -549,7 +549,7 @@ class InvoicesApi(object):
             (data) = self.get_invoice_with_http_info(invoice_id, **kwargs)  # noqa: E501
             return data
 
-    def get_invoice_with_http_info(self, invoice_id, **kwargs):  # noqa: E501
+    def get_invoice_with_http_info(self, company_id,  invoice_id, **kwargs):  # noqa: E501
         """Get invoice  # noqa: E501
 
         ﻿Get an invoice.  # noqa: E501
@@ -565,7 +565,7 @@ class InvoicesApi(object):
                  returns the request thread.
         """
 
-        all_params = ['invoice_id']  # noqa: E501
+        all_params = ['invoice_id', 'company_id']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -584,12 +584,17 @@ class InvoicesApi(object):
         if ('invoice_id' not in params or
                 params['invoice_id'] is None):
             raise ValueError("Missing the required parameter `invoice_id` when calling `get_invoice`")  # noqa: E501
+        if ('company_id' not in params or
+                params['company_id'] is None):
+            raise ValueError("Missing the required parameter `company_id` when calling `get_invoice`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
         if 'invoice_id' in params:
             path_params['invoiceId'] = params['invoice_id']  # noqa: E501
+        if 'company_id' in params:
+            path_params['companyId'] = params['company_id']
 
         query_params = []
 
@@ -864,7 +869,7 @@ class InvoicesApi(object):
                  returns the request thread.
         """
 
-        all_params = ['page', 'page_size', 'query', 'order_by']  # noqa: E501
+        all_params = ['company_id', 'page', 'page_size', 'query', 'order_by']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -883,6 +888,10 @@ class InvoicesApi(object):
         collection_formats = {}
 
         path_params = {}
+        if ('company_id' not in params or params['company_id'] is None):
+            raise ValueError("Missing the required parameter `company_id` when calling `get_invoice`")
+        else: 
+            path_params['companyId'] = params['company_id']
 
         query_params = []
         if 'page' in params:
